@@ -10,18 +10,13 @@ const travelRouter = require('./routes/travel');
 const cors = require('cors');
 
 const app = express();
-// 解决跨域
+// 1. 最优先配置 CORS（放在所有中间件和路由之前）
 app.use(cors({
-  origin: 'https://travel-client-dpq63rf8bd2b.edgeone.dev', // 你的 EdgeOne 域名
+  origin: true, // 允许所有来源（因为我们在做测试，不用写死域名）
+  credentials: true, // 允许携带凭证
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  credentials: true
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
-
-// 2. 显式处理 OPTIONS 预检请求
-app.options('*', (req, res) => {
-  res.sendStatus(200); // 或者 res.sendStatus(204)
-});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
