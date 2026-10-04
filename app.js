@@ -11,7 +11,17 @@ const cors = require('cors');
 
 const app = express();
 // 解决跨域
-app.use(cors());
+app.use(cors({
+  origin: 'https://travel-client-dpq63rf8bd2b.edgeone.dev', // 你的 EdgeOne 域名
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true
+}));
+
+// 2. 显式处理 OPTIONS 预检请求
+app.options('*', (req, res) => {
+  res.sendStatus(200); // 或者 res.sendStatus(204)
+});
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
