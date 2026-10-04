@@ -1,0 +1,23 @@
+{
+  "watch": [
+    "bin",
+    "routes",
+    "app.js",
+    "views",
+    "public"
+  ],
+  "ignore": [
+    "node_modules",
+    ".git",
+    "logs",
+    "tmp",
+    "dist"
+  ],
+  "ext": "js,json,jade",
+  "delay": "200ms",
+  "restartable": "rs",
+  "colours": true,
+  "env": {
+    "NODE_ENV": "development"
+  }
+}
