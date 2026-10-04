@@ -10,7 +10,7 @@ const travelRouter = require('./routes/travel');
 const cors = require('cors');
 
 const app = express();
-// 跨域
+// 解决跨域
 app.use(cors());
 
 // view engine setup
